@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 여기는 html -->
+    <div id="app">
+        {{message}}
+    </div>
+    <!-- v-bind는 html에서 속성값을 줄 때 활용 -->
+    <div id="app2" v-bind:title="message">
+        하이하이
+    </div>
+    <div id="app3">
+        <p v-if="seen">내가 보여...................?</p>
+    </div>
+    <div id="app4">
+        <h3 v-for="todo in todos">{{todo}}</h3>
+    </div>
+    <div id="app5">
+        <p>{{message}}</p>
+        <button v-on:click="reverse">메시지 뒤집기</button>
+    </div>
+    <div id="app6">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 여기는 vue.js -->
+    <script>
+        const app = new Vue(
+            {
+                // element
+                el : "#app",
+                data: {
+                    message:"안녕하세요!!!"
+                }
+            }
+        )
+        const app2 = new Vue({
+            el: "#app2",
+            data : {
+                message:`안뇽`
+            }
+        })
+        const app3 = new Vue({
+            el: "#app3",
+            data: {
+                seen: true
+            }
+        })
+        const app4 = new Vue({
+            el: "#app4",
+            data: {
+                todos:[
+                    "점심메뉴고르기",
+                    "점심먹기",
+                    "조퇴하기",
+                    "낮잠자기",
+                ]
+            }
+        })
+        const app5 = new Vue({
+            el: "#app5",
+            data: {
+                message:"안녕하세용!"
+            },
+            methods:{
+                reverse: function(){
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+        const app6 = new Vue({
+            el: "#app6",
+            data: {
+                message:"안녕하세요 Vue"
+            }
+        })
+    </script>
+</body>
+</html>
